@@ -96,7 +96,7 @@ jobs:
           path: temp/test/lcov-report
   deploy-dev:
     name: Deploy to dev site
-    if: "!contains(!contains(github.event.head_commit.message,'[skip-cd]')"
+    if: "!contains(github.event.head_commit.message,'[skip-cd]')"
     runs-on: ubuntu-latest
     needs: [build, test]
     steps:
@@ -119,7 +119,7 @@ jobs:
           OVERWRITE: true
   deploy-staging:
     name: Deploy to staging site
-    if: "github.ref == 'refs/heads/staging' && !contains(!contains(github.event.head_commit.message,'[skip-cd]')"
+    if: "github.ref == 'refs/heads/staging' && !contains(github.event.head_commit.message,'[skip-cd]')"
     runs-on: ubuntu-latest
     needs: [build, test]
     steps:
@@ -142,7 +142,7 @@ jobs:
           OVERWRITE: true
   deploy-production:
     name: Deploy to production site
-    if: "github.ref == 'refs/heads/master' && !contains(!contains(github.event.head_commit.message,'[skip-cd]')"
+    if: "github.ref == 'refs/heads/master' && !contains(github.event.head_commit.message,'[skip-cd]')"
     runs-on: ubuntu-latest
     needs: [build, test]
     steps:
